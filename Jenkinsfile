@@ -3,6 +3,7 @@ pipeline {
     environment {
         DOCKER_IMAGE = 'dockerraziza/New_app'  // Utilisez ici le nom d'image que vous voulez
         KUBE_NAMESPACE = 'default'
+        DOCKER_HOST = 'unix:///var/run/docker.sock'
     }
     stages {
         stage('Cloner le dépôt') {
