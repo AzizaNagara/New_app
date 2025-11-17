@@ -4,7 +4,7 @@ metadata:
   name: new-app-service
 spec:
   selector:
-    app: new_app  
+    app: new-app  
   ports:
     - protocol: TCP
       port: 80 
