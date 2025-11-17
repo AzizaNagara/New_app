@@ -6,14 +6,14 @@ spec:
   replicas: 2  # Number of replicas of your application
   selector:
     matchLabels:
-      app: new-app
+      app: new_app
   template:
     metadata:
       labels:
-        app: new-app
+        app: new_app
     spec:
       containers:
         - name: new-app
-          image: dockerraziza/New_app  # Docker image name
+          image: dockerraziza/new_app  # Docker image name
           ports:
             - containerPort: 80  # Exposed application port
