@@ -1,0 +1,19 @@
+# Default values for mon-app
+replicaCount: 2
+
+image:
+  repository: dockerraziza/new_app
+  pullPolicy: IfNotPresent
+  tag: ""
+
+nameOverride: ""
+fullnameOverride: ""
+
+service:
+  type: LoadBalancer
+  port: 80
+  targetPort: 80
+
+app:
+  name: mon-app
+

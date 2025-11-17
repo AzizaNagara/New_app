@@ -4,12 +4,13 @@ pipeline {
         DOCKER_IMAGE = 'dockerraziza/new_app'  // Utilisez ici le nom d'image que vous voulez
         KUBE_NAMESPACE = 'default'
         DOCKER_HOST = 'npipe:////./pipe/docker_engine'
+        HELM_CHART_PATH = './mon-app'
     }
     stages {
         stage('Cloner le dépôt') {
             steps {
-                // Spécifier explicitement la branche main pour le clonage
-                git branch: 'main', url: 'https://github.com/AzizaNagara/New_app.git'
+                // Cloner la branche helm-deployment pour le déploiement avec Helm
+                git branch: 'helm-deployment', url: 'https://github.com/AzizaNagara/New_app.git'
             }
         }
         stage('Construire l\'image Docker') {
@@ -30,12 +31,11 @@ pipeline {
                 }
             }
         }
-        stage('Déployer sur Kubernetes') {
+        stage('Déployer avec Helm') {
             steps {
                 script {
-                    // Appliquer les fichiers YAML pour le déploiement et le service Kubernetes
-                    sh 'kubectl apply -f deployment.yaml --validate=false'
-                    sh 'kubectl apply -f service.yaml --validate=false'
+                    // Déployer l'application avec Helm
+                    sh 'helm upgrade --install mon-app $HELM_CHART_PATH --namespace $KUBE_NAMESPACE --set image.repository=$DOCKER_IMAGE --set image.tag=latest'
                 }
             }
         }
