@@ -13,7 +13,7 @@ spec:
         app: new_app
     spec:
       containers:
-        - name: new-app
+        - name: new_app
           image: dockerraziza/new_app  # Docker image name
           ports:
             - containerPort: 80  # Exposed application port
