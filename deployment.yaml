@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: new-app-deployment
 spec:
-  replicas: 2  # Nombre de réplicas de votre application
+  replicas: 2  # Number of replicas of your application
   selector:
     matchLabels:
       app: new-app
@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: new-app
-          image: dockerraziza/New_app  # Le nom de l'image Docker
+          image: dockerraziza/New_app  # Docker image name
           ports:
-            - containerPort: 80  # Port de l'application exposé
+            - containerPort: 80  # Exposed application port
