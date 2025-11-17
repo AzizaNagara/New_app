@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        DOCKER_IMAGE = 'dockerraziza/New_app'  // Utilisez ici le nom d'image que vous voulez
+        DOCKER_IMAGE = 'dockerraziza/new_app'  // Utilisez ici le nom d'image que vous voulez
         KUBE_NAMESPACE = 'default'
         DOCKER_HOST = 'npipe:////./pipe/docker_engine'
     }
