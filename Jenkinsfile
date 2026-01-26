@@ -1,9 +1,9 @@
 pipeline {
     agent any
     environment {
-        DOCKER_IMAGE = 'dockerraziza/New_app'  // Utilisez ici le nom d'image que vous voulez
+        DOCKER_IMAGE = 'dockerraziza/new_app'  // Utilisez ici le nom d'image que vous voulez
         KUBE_NAMESPACE = 'default'
-        DOCKER_HOST = 'unix:///var/run/docker.sock'
+        DOCKER_HOST = 'npipe:////./pipe/docker_engine'
     }
     stages {
         stage('Cloner le dépôt') {
@@ -34,8 +34,8 @@ pipeline {
             steps {
                 script {
                     // Appliquer les fichiers YAML pour le déploiement et le service Kubernetes
-                    sh 'kubectl apply -f deployment.yaml'
-                    sh 'kubectl apply -f service.yaml'
+                    sh 'kubectl apply -f deployment.yaml --validate=false'
+                    sh 'kubectl apply -f service.yaml --validate=false'
                 }
             }
         }
